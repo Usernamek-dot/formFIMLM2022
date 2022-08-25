@@ -15,8 +15,11 @@ module.exports = {
         "bubble-gum": "#ff77e9",
         bermuda: "#78dcca",
       },
+      fontFamily:{
+        inter:["Poppins","sans-serif"]
+      }
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
   darkMode: "media",
 };

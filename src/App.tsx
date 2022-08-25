@@ -6,8 +6,11 @@ import { Header } from "./components/Header";
 function App() {
   return (
     <>
-      <Header />
-      {/* <Form /> */}
+        <Header />
+        <div className="flex justify-center py-6">
+          <Form />
+        </div>
+
     </>
   );
 }
