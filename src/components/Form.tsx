@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Error } from "./Error";
-import { Modal } from "./Modal";
+import Swal from "sweetalert2";
 
 export const Form = () => {
   const [name, setName] = useState("");
@@ -23,8 +23,17 @@ export const Form = () => {
     setEmail("");
     setPhone("");
     setDate("");
+
+    okModal();
   };
 
+  const okModal = () => {
+    Swal.fire({
+      title: "Done!",
+      icon: "success",
+      confirmButtonText: "Oki doki 😎",
+    });
+  };
   return (
     <>
       {/* list */}
@@ -91,7 +100,12 @@ export const Form = () => {
             </div>
           </div>
           <div className="flex items-center ">
-            <Modal />
+            <button
+              type="submit"
+              className="inline-block px-6 py-2.5 bg-gray-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out w-full"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>
