@@ -1,23 +1,79 @@
+import { useState } from "react";
+
 export const Form = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+
   return (
     <>
       <div className="block p-6 rounded-lg shadow-lg max-w-md bg-silver">
         <form method="onSubmit">
-          {/* names */}
+          {/* name */}
           <div className="form-group mb-6">
             <input
               type="text"
               className="form-input px-4 py-3 rounded-full w-full"
-              placeholder="Names "
+              placeholder="Name "
+              onChange={(e) => setName(e.target.value)}
             />
+            {name == "" && (
+              <div
+                className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
+                role="alert"
+              >
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="times-circle"
+                  className="w-4 h-4 mr-2 fill-current"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                  ></path>
+                </svg>
+                You missed this one !
+              </div>
+            )}
           </div>
+
           {/* phone */}
           <div className="form-group mb-6">
             <input
               type="tel"
               className="form-input px-4 py-3 rounded-full w-full"
               placeholder="Phone"
+              onChange={(e) => setPhone(e.target.value)}
             />
+            {phone == "" && (
+              <div
+                className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
+                role="alert"
+              >
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="times-circle"
+                  className="w-4 h-4 mr-2 fill-current"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                  ></path>
+                </svg>
+                You missed this one !
+              </div>
+            )}
           </div>
           {/* email */}
           <div className="form-group mb-6">
@@ -25,7 +81,31 @@ export const Form = () => {
               type="email"
               className="form-input px-4 py-3 rounded-full w-full"
               placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
             />
+            {email == "" && (
+              <div
+                className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
+                role="alert"
+              >
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="times-circle"
+                  className="w-4 h-4 mr-2 fill-current"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                  ></path>
+                </svg>
+                You missed this one !
+              </div>
+            )}
           </div>
           {/* date */}
           <div className="form-group mb-6">
@@ -38,7 +118,31 @@ export const Form = () => {
                 className="form-input px-4 py-3 rounded-full w-full"
                 placeholder="Pick a date"
                 data-mdb-toggle="datepicker"
+                onChange={(e) => setDate(e.target.value)}
               />
+              {date == "" && (
+                <div
+                  className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
+                  role="alert"
+                >
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="times-circle"
+                    className="w-4 h-4 mr-2 fill-current"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+                    ></path>
+                  </svg>
+                  You missed this one !
+                </div>
+              )}
             </div>
           </div>
           {/* buttons*/}

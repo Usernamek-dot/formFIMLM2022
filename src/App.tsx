@@ -1,16 +1,14 @@
 import "./App.css";
 import { Form } from "./components/Form";
 import { Header } from "./components/Header";
-// import "./App.css";
 
 function App() {
   return (
     <>
-        <Header />
-        <div className="flex justify-center py-6">
-          <Form />
-        </div>
-
+      <Header />
+      <div className="flex justify-center py-6">
+        <Form />
+      </div>
     </>
   );
 }
