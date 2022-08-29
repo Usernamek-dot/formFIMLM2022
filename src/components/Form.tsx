@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Error } from "./Error";
+import { Modal } from "./Modal";
 
 export const Form = () => {
   const [name, setName] = useState("");
@@ -26,6 +27,7 @@ export const Form = () => {
 
   return (
     <>
+      {/* list */}
       <div className="md:w-1/2 lg:w-2/5 mx-5">
         {error && <Error />}
         <div className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 uppercase">
@@ -43,9 +45,9 @@ export const Form = () => {
           </div>
         </div>
       </div>
+      {/* form */}
       <div className="block p-6 rounded-lg shadow-lg max-w-md bg-silver  md:w-1/2 lg:w-2/5 mx-5">
         <form onSubmit={handleSubmit}>
-          {/* name */}
           <div className="form-group mb-6">
             <input
               type="text"
@@ -55,8 +57,6 @@ export const Form = () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-
-          {/* phone */}
           <div className="form-group mb-6">
             <input
               type="tel"
@@ -66,7 +66,6 @@ export const Form = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
-          {/* email */}
           <div className="form-group mb-6">
             <input
               type="email"
@@ -76,7 +75,6 @@ export const Form = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          {/* date */}
           <div className="form-group mb-6">
             <div
               className="datepicker   relative form-floating mb-3 xl:w-96 "
@@ -92,14 +90,8 @@ export const Form = () => {
               />
             </div>
           </div>
-          {/* buttons*/}
           <div className="flex items-center ">
-            <button
-              type="submit"
-              className="inline-block px-6 py-2.5 bg-gray-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out w-full"
-            >
-              Submit
-            </button>
+            <Modal />
           </div>
         </form>
       </div>
