@@ -1,46 +1,59 @@
 import { useState } from "react";
+import { Error } from "./Error";
 
 export const Form = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
+  const [error, setError] = useState(false);
+
+  // validation
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if ([name, email, phone, date].includes("")) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
+
+    setName("");
+    setEmail("");
+    setPhone("");
+    setDate("");
+  };
 
   return (
     <>
-      <div className="block p-6 rounded-lg shadow-lg max-w-md bg-silver">
-        <form method="onSubmit">
+      <div className="md:w-1/2 lg:w-2/5 mx-5">
+        {error && <Error />}
+        <div className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 uppercase">
+          <div className="mb-5">
+            <b> Name:</b> {name}
+          </div>
+          <div className="mb-5">
+            <b> Phone:</b> {phone}
+          </div>
+          <div className="mb-5">
+            <b> Email:</b> {email}
+          </div>
+          <div className="mb-5">
+            <b>Birthday:</b> {date}
+          </div>
+        </div>
+      </div>
+      <div className="block p-6 rounded-lg shadow-lg max-w-md bg-silver  md:w-1/2 lg:w-2/5 mx-5">
+        <form onSubmit={handleSubmit}>
           {/* name */}
           <div className="form-group mb-6">
             <input
               type="text"
               className="form-input px-4 py-3 rounded-full w-full"
               placeholder="Name "
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {name == "" && (
-              <div
-                className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
-                role="alert"
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="times-circle"
-                  className="w-4 h-4 mr-2 fill-current"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                  ></path>
-                </svg>
-                You missed this one !
-              </div>
-            )}
           </div>
 
           {/* phone */}
@@ -49,31 +62,9 @@ export const Form = () => {
               type="tel"
               className="form-input px-4 py-3 rounded-full w-full"
               placeholder="Phone"
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
-            {phone == "" && (
-              <div
-                className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
-                role="alert"
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="times-circle"
-                  className="w-4 h-4 mr-2 fill-current"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                  ></path>
-                </svg>
-                You missed this one !
-              </div>
-            )}
           </div>
           {/* email */}
           <div className="form-group mb-6">
@@ -81,31 +72,9 @@ export const Form = () => {
               type="email"
               className="form-input px-4 py-3 rounded-full w-full"
               placeholder="Email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {email == "" && (
-              <div
-                className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
-                role="alert"
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="times-circle"
-                  className="w-4 h-4 mr-2 fill-current"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                  ></path>
-                </svg>
-                You missed this one !
-              </div>
-            )}
           </div>
           {/* date */}
           <div className="form-group mb-6">
@@ -114,50 +83,22 @@ export const Form = () => {
               data-mdb-toggle-button="false"
             >
               <input
-                type="text"
+                type="date"
                 className="form-input px-4 py-3 rounded-full w-full"
                 placeholder="Pick a date"
                 data-mdb-toggle="datepicker"
+                value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
-              {date == "" && (
-                <div
-                  className="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-full"
-                  role="alert"
-                >
-                  <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fas"
-                    data-icon="times-circle"
-                    className="w-4 h-4 mr-2 fill-current"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
-                    ></path>
-                  </svg>
-                  You missed this one !
-                </div>
-              )}
             </div>
           </div>
           {/* buttons*/}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center ">
             <button
               type="submit"
-              className="inline-block px-6 py-2.5 bg-gray-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
+              className="inline-block px-6 py-2.5 bg-gray-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out w-full"
             >
               Submit
-            </button>
-            <button
-              type="submit"
-              className="inline-block px-6 py-2.5 bg-gray-900 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-800 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Reset
             </button>
           </div>
         </form>

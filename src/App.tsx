@@ -1,5 +1,5 @@
-import "./App.css";
 import { Form } from "./components/Form";
+import FormTest from "./components/FormTest";
 import { Header } from "./components/Header";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <>
       <Header />
       <div className="flex justify-center py-6">
+        {/* <FormTest /> */}
         <Form />
       </div>
     </>
